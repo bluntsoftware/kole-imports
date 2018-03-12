@@ -1,0 +1,51 @@
+
+<div>
+    <div class="row">
+        <div class="col-sm-2" >
+            <div ng-include="'components/account/account_menu.html'"></div>
+        </div>
+        <div class="col-md-8">
+            <h1>Membership Manager</h1>
+            <div class="row">
+                <div class="col-sm-6">
+
+                </div>
+                <div class="col-sm-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-responsive table-hover table-striped push-down">
+                        <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Plan</th>
+                            <th>Plan ID</th>
+                            <th>Price</th>
+                            <th>Next Billing Date</th>
+                            <th>Description</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-show="(modelList.rows).length === 0">
+                            <td colspan="10">No Records Imported Yet !</td>
+                        </tr>
+                        <tr ng-click="update(data.subscription.id)" id="{{data.subscription.id}}" ng-repeat="data in subscriptions">
+                            <td>{{data.subscription.status}}</td>
+                            <td>{{data.plan.name}}</td>
+                            <td>{{data.subscription.planId}}</td>
+                            <td>{{data.subscription.nextBillingPeriodAmount | currency}}</td>
+                            <td>{{data.subscription.nextBillingDate | date:'longDate'}} </td>
+                            <td>{{data.plan.description}}</td>
+
+                            <!--  <td ng-click="update(item.id)"><i class="fa fa-edit fa-2x"></i></td> -->
+                            <td ng-click="cancel(data.subscription.id); $event.stopPropagation();" class="text-center" ><i class="fa fa-trash fa-1x"></i>Cancel</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

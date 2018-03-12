@@ -1,0 +1,38 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-sm-3" >
+            <div ng-include="'components/account/account_menu.html'"></div>
+        </div>
+        <div class="col-sm-9">
+
+            <div class="row">
+                <div class="col-sm-5 container-fluid">
+                    <h2>Account Detail</h2>
+                    <div class="jumbotron ">
+                        <label><p>User ID : {{account.login}}</p></label><br>
+                        <label><p>Name : {{account.firstName}} {{account.lastName}}</p></label><br>
+                        <label><p>Email : {{account.email}}</p></label>
+                    </div>
+                </div>
+                <div class="col-sm-7 container-fluid" >
+                    <h2>Membership Detail</h2>
+                    <div ng-repeat="data in subscriptions">
+                        <div class="jumbotron ">
+                            <label><p>Plan: {{data.plan.name}} - {{data.subscription.planId}}</p></label><br>
+                            <label><p>Status: {{data.subscription.status}}</p></label>
+                            <label><p>You have selected the 30 day membership</p></label><br>
+                            <label><p>Payment Method : {{data.subscription.paymentMethodToken}}</p></label><br>
+                            <p class="editable-text">PAYMENT DATE
+                                You will be charged on {{data.subscription.nextBillingDate | date:'longDate'}} for {{data.subscription.nextBillingPeriodAmount | currency}} (plus applicable taxes, if any)
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

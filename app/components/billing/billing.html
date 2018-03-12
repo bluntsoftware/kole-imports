@@ -1,0 +1,48 @@
+<div>
+    <div class="row">
+        <div class="col-sm-2" >
+            <div ng-include="'components/account/account_menu.html'"></div>
+        </div>
+        <div class="col-md-8">
+            <h1>Billing History</h1>
+            <div class="row">
+                <div class="col-sm-6">
+
+                </div>
+                <div class="col-sm-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-responsive table-hover table-striped push-down">
+                        <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Plan</th>
+                            <th>Plan ID</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-show="(modelList.rows).length === 0">
+                            <td colspan="10">No Records Imported Yet !</td>
+                        </tr>
+                        <tr ng-click="update(data.transaction.id)" id="{{data.transaction.id}}" ng-repeat="data in transactions">
+                            <td>{{data.transaction.status}}</td>
+                            <td>{{data.plan.name}}</td>
+                            <td>{{data.transaction.planId}}</td>
+                            <td>{{data.transaction.amount | currency}}</td>
+                            <td>{{data.transaction.createdAt | date:'longDate'}} </td>
+                            <td>{{data.plan.description}}</td>
+                            <td>{{data.transaction.paymentInstrumentType}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
