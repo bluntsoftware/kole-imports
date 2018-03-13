@@ -1,11 +1,18 @@
 catwalkApp.factory('conduit', function ($resource,$q) {
     return {
+        listFlowTemplates:function(){
+
+        },
+        loadTemplate:function(templateName, defaults){
+
+        },
         collection:function(endpoint,context){
             var final = base_url + 'conduit/rest/' + endpoint ;
             if(context){
                 final += "/action/" + context;
             }
             return {
+
                 get:function (params) {
                     var deferred = $q.defer();
                     $resource( final, {}, {}).get(params,function(data){
@@ -22,7 +29,7 @@ catwalkApp.factory('conduit', function ($resource,$q) {
                 },
                 save:function (params) {
                     var deferred = $q.defer();
-                    $resource( final, {}, {}).post(params,function(data){
+                    $resource( final, {}, {}).save(params,function(data){
                         deferred.resolve(data);
                     });
                     return deferred.promise;
