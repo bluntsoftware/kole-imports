@@ -16,4 +16,4 @@ var catwalkApp  = angular.module('catwalk', [
     'ngTagsInput',                  // tags
     'as.sortable'                   // Ng Sortable
 ]).run();
-var base_url = 'http://localhost:8080/glue/'; //'../glue/   http://localhost:8080/glue/
+var base_url = 'http://localhost:80/glue/'; //'../glue/   http://localhost:8080/glue/

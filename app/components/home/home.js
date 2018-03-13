@@ -1,8 +1,16 @@
 /**
  * MainCtrl - controller
  */
-catwalkApp.controller('MainCtrl', ['$scope','$state','$translate','$window','SubscriptionPlan','Settings',
-    function ($scope,$state,$translate,$window,SubscriptionPlan,Settings) {
+catwalkApp.controller('MainCtrl', ['$scope','$state','$translate','$window','conduit','SubscriptionPlan','Settings',
+    function ($scope,$state,$translate,$window,conduit,SubscriptionPlan,Settings) {
+
+        $scope.send= function(){
+           conduit.collection('wow').get({'hello':"world"}).then(function(data){
+               conduit.collection('wow','mycontext').get({'hello':"context"}).then(function(data){
+                   console.log(data);
+               });
+            });
+        };
 
         SubscriptionPlan.getByPlanId({planId:''},function(plan){
             $scope.smallPlan = plan;
