@@ -29,7 +29,7 @@ catwalkApp.factory('Register', function ($resource) {
 });
 
 
-catwalkApp.factory('Settings', function ($resource,$q) {
+catwalkApp.factory('USettings', function ($resource,$q) {
     this.init = function () {
         this.settings = null;
     };
