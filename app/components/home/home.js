@@ -3,17 +3,24 @@
  */
 catwalkApp.controller('MainCtrl', ['$scope','$state','$translate','$window','conduit','SubscriptionPlan','Settings',
     function ($scope,$state,$translate,$window,conduit,SubscriptionPlan,Settings) {
-
-        conduit.createCRUDFlow('proof','wow').then(function(proof){
+        /*
+        * Create A Mongo Database CRUD Flow named proof in Conduit if the flow doesn't exist
+        * The table is proof and the database is wow
+        * then return the table(proof) collection.
+        * */
+        conduit.createMongoFlow('proof','wow').then(function(proof){
             $scope.proof = proof;
         });
+
         $scope.save = function(data){
             $scope.proof.save(data).then(function(){
                 $scope.list();
             });
         };
         $scope.list = function(){
-
+            $scope.proof.get().then(function(list){
+                $scope.rows = list.rows;
+            });
         };
 
         $scope.send = function(){

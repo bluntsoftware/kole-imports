@@ -1,6 +1,6 @@
 catwalkApp.factory('conduit', function ($resource,$q) {
     var conduit =  {
-        createCRUDFlow:function(endpoint,database){
+        createMongoFlow:function(endpoint,database){
             var context = {
                 'template':'mongo_crud.json',
                 'databaseName':database,
@@ -18,7 +18,6 @@ catwalkApp.factory('conduit', function ($resource,$q) {
             if(context){
                 final += "/action/" + context;
             }
-
             return {
 
                 get:function (params) {
@@ -51,6 +50,6 @@ catwalkApp.factory('conduit', function ($resource,$q) {
                 }
             }
         }
-    }
+    };
     return conduit;
 });
