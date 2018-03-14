@@ -24,20 +24,16 @@ catwalkApp.controller('MainCtrl', ['$scope','$state','$translate','$window','con
         };
 
         $scope.send = function(){
-
-
             var getStatusApi =  conduit.collection('wow','getStatus');
-
             getStatusApi.save({'myName':'george'}).then(function(){
 
             });
             getStatusApi.get({'hello':"wow-context"}).then(function(data){
                 console.log(data);
             });
-
            conduit.collection('wow').get({'hello':"wow"}).then(function(data){
 
-            });
+           });
         };
 
         SubscriptionPlan.getByPlanId({planId:''},function(plan){
