@@ -39,7 +39,7 @@ catwalkApp.factory('Settings', function ($resource,$q) {
         var deferred = $q.defer();
         var self = this;
         if(!this.settings){
-            $resource(user_manager_base_url + 'applicationSettings/' + this.id , {}, {
+            $resource(user_manager_base_url + 'applicationSettings/uget' , {}, {
                 'get': { method: 'GET', params: {}, isArray: false}
             }).get({id: this.id},function(data) {
                 self.settings = data;
