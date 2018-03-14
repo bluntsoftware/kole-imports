@@ -4,7 +4,21 @@
 catwalkApp.controller('MainCtrl', ['$scope','$state','$translate','$window','conduit','SubscriptionPlan','Settings',
     function ($scope,$state,$translate,$window,conduit,SubscriptionPlan,Settings) {
 
+        conduit.createCRUDFlow('proof','wow').then(function(proof){
+            $scope.proof = proof;
+        });
+        $scope.save = function(data){
+            $scope.proof.save(data).then(function(){
+                $scope.list();
+            });
+        };
+        $scope.list = function(){
+
+        };
+
         $scope.send = function(){
+
+
             var getStatusApi =  conduit.collection('wow','getStatus');
 
             getStatusApi.save({'myName':'george'}).then(function(){

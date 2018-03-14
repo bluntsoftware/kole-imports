@@ -1,16 +1,24 @@
 catwalkApp.factory('conduit', function ($resource,$q) {
-    return {
-        listFlowTemplates:function(){
-
-        },
-        loadTemplate:function(templateName, defaults){
-
+    var conduit =  {
+        createCRUDFlow:function(endpoint,database){
+            var context = {
+                'template':'mongo_crud.json',
+                'databaseName':database,
+                'flowName':endpoint,
+                'collectionName':endpoint
+            };
+            var deferred = $q.defer();
+            $resource( base_url + 'conduit/flows/template', {}, {}).save(context,function(data){
+                deferred.resolve(conduit.collection(endpoint));
+            });
+            return deferred.promise;
         },
         collection:function(endpoint,context){
             var final = base_url + 'conduit/rest/' + endpoint ;
             if(context){
                 final += "/action/" + context;
             }
+
             return {
 
                 get:function (params) {
@@ -44,5 +52,5 @@ catwalkApp.factory('conduit', function ($resource,$q) {
             }
         }
     }
-
+    return conduit;
 });
