@@ -10,20 +10,19 @@ var user_manager_base_url  = base_url + 'user_manager/';
 
 /* Services */
 
-catwalkApp.factory('Application', ['$resource',
-    function ($resource) {
-        return $resource(base_url + 'application', {}, {
-            'get': { method: 'GET', params: {}, isArray: false},
-            'version':{method: 'GET',isArray: false,url:base_url + 'application' + '/version'}
-        });
-    }]);
+catwalkApp.factory('Application', ['$resource', function ($resource) {
+    return $resource(base_url + 'application', {}, {
+        'get': { method: 'GET', params: {}, isArray: false},
+        'version':{method: 'GET',isArray: false,url:base_url + 'application' + '/version'}
+    });
+}]);
 
 
-catwalkApp.factory('Account', ['$resource',
-    function ($resource) {
-        return $resource(user_manager_base_url + 'account', {}, {
-        });
-    }]);
+catwalkApp.factory('Account', ['$resource', function ($resource) {
+    return $resource(user_manager_base_url + 'account', {}, {
+    });
+}]);
+
 catwalkApp.factory('Register', function ($resource) {
     return $resource(user_manager_base_url + 'register', {}, {
     });
@@ -31,7 +30,6 @@ catwalkApp.factory('Register', function ($resource) {
 
 
 catwalkApp.factory('Settings', function ($resource,$q) {
-    this.id  =  "d7623ffd-d28b-4542-a5f8-3a4b120bc165";
     this.init = function () {
         this.settings = null;
     };
@@ -41,11 +39,8 @@ catwalkApp.factory('Settings', function ($resource,$q) {
         if(!this.settings){
             $resource(user_manager_base_url + 'applicationSettings/uget' , {}, {
                 'get': { method: 'GET', params: {}, isArray: false}
-            }).get({id: this.id},function(data) {
+            }).get({},function(data) {
                 self.settings = data;
-                if(!self.settings || !self.settings._id){
-                    self.settings = {'_id':self.id};
-                }
                 deferred.resolve(self.settings);
             });
         }else{
