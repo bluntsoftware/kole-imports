@@ -230,7 +230,7 @@ catwalkApp.factory('AuthenticationSharedService', function ($rootScope, $http, a
                     self.gotoPage($rootScope.account.landingPage);
                 }
             }else{
-                Settings.get().then(function(data){
+                USettings.get().then(function(data){
                     self.gotoPage(data.landingPage);
                 });
             }

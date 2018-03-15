@@ -12,7 +12,7 @@ catwalkApp.controller('ActivationController', function ($scope, $routeParams, Ac
 catwalkApp.controller('ErrorController',function ($scope) {
     $scope.error = "You are not authorized to access this page.";
 });
-catwalkApp.controller('ResetPasswordController',function ($scope, $translate, ResetPassword,ChangePassword,$stateParams,Settings) {
+catwalkApp.controller('ResetPasswordController',function ($scope, $translate, ResetPassword,ChangePassword,$stateParams,USettings) {
     $scope.success = null;
     $scope.error = null;
     if($stateParams.token){ 
@@ -38,7 +38,7 @@ catwalkApp.controller('ResetPasswordController',function ($scope, $translate, Re
                 }
             });
     };
-    Settings.get().then(function(data){
+    USettings.get().then(function(data){
         $scope.settings = data;
         $scope.base_url = base_url;
     });
@@ -65,7 +65,7 @@ catwalkApp.controller('ResetPasswordController',function ($scope, $translate, Re
 });
 
 
-catwalkApp.controller('SubscribeController',function ($scope,$stateParams, $translate,Payment, Register,Settings,SubscriptionPlan,AuthenticationSharedService) {
+catwalkApp.controller('SubscribeController',function ($scope,$stateParams, $translate,Payment, Register,USettings,SubscriptionPlan,AuthenticationSharedService) {
     $scope.success = null;
     $scope.error = null;
     $scope.doNotMatch = null;
@@ -97,7 +97,7 @@ catwalkApp.controller('SubscribeController',function ($scope,$stateParams, $tran
 
     };
     $scope.configureBraintree();
-    Settings.get().then(function(data){
+    USettings.get().then(function(data){
         $scope.settings = data;
     });
 
@@ -133,14 +133,14 @@ catwalkApp.controller('SubscribeController',function ($scope,$stateParams, $tran
         }
     }
 });
-catwalkApp.controller('RegisterController',function ($scope, $translate, Register,Settings) {
+catwalkApp.controller('RegisterController',function ($scope, $translate, Register,USettings) {
     $scope.success = null;
     $scope.error = null;
     $scope.doNotMatch = null;
     $scope.errorUserExists = null;
     $scope.registerAccount = {};
     $scope.confirmPassword ="";
-    Settings.get().then(function(data){
+    USettings.get().then(function(data){
         $scope.settings = data;
         $scope.base_url = base_url;
     });
@@ -178,8 +178,8 @@ catwalkApp.controller('SocialLoginController', ['$scope', '$rootScope', '$locati
 
 }]);
 
-catwalkApp.controller('LoginController', ['$scope', '$rootScope', '$location','AuthenticationSharedService','Settings',
-    function ($scope, $rootScope,$location, AuthenticationSharedService,Settings) {
+catwalkApp.controller('LoginController', ['$scope', '$rootScope', '$location','AuthenticationSharedService','USettings',
+    function ($scope, $rootScope,$location, AuthenticationSharedService,USettings) {
 
         $scope.rememberMe = true;
         $scope.login = function () {
@@ -192,7 +192,7 @@ catwalkApp.controller('LoginController', ['$scope', '$rootScope', '$location','A
                 }
             })
         };
-        Settings.get().then(function(data){
+        USettings.get().then(function(data){
             console.log(data);
             $scope.settings = data;
             $scope.base_url = base_url;

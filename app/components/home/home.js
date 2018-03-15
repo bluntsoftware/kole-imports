@@ -1,8 +1,8 @@
 /**
  * MainCtrl - controller
  */
-catwalkApp.controller('MainCtrl', ['$scope','$state','$translate','$window','conduit','SubscriptionPlan','Settings',
-    function ($scope,$state,$translate,$window,conduit,SubscriptionPlan,Settings) {
+catwalkApp.controller('MainCtrl', ['$scope','$state','$translate','$window','conduit','SubscriptionPlan','USettings',
+    function ($scope,$state,$translate,$window,conduit,SubscriptionPlan,USettings) {
         /*
         * Create A Mongo Database CRUD Flow named proof in Conduit if the flow doesn't exist
         * The table is proof and the database is wow
@@ -46,7 +46,7 @@ catwalkApp.controller('MainCtrl', ['$scope','$state','$translate','$window','con
             $scope.largePlan = plan;
         });
 
-        Settings.get().then(function(data){
+        USettings.get().then(function(data){
             $scope.settings = data;
             $scope.base_url = base_url;
         });
