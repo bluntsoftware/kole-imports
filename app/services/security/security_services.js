@@ -113,7 +113,10 @@ catwalkApp.factory('Session', function () {
 catwalkApp.factory('AuthenticationSharedService', function ($rootScope, $http, authService, Session, Account,$location) {
     return {
         sociallogin:function(){
+            alert("sociallogin");
             Account.get(function(data) {
+                alert(data);
+                console.log(data);
                 Session.create(data.landingPage,data.login, data.firstName, data.lastName, data.email, data.roles,data.imgSrc);
                 $rootScope.account = Session;
                 authService.loginConfirmed(data);

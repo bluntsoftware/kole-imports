@@ -174,9 +174,10 @@ catwalkApp.controller('RegisterController',function ($scope, $translate, Registe
 });
 catwalkApp.controller('SocialLoginController', ['$scope', '$rootScope', '$location','AuthenticationSharedService',
     function ($scope, $rootScope,$location, AuthenticationSharedService) {
+        alert("SocialLoginController");
         AuthenticationSharedService.sociallogin();
-
-}]);
+    }
+]);
 
 catwalkApp.controller('LoginController', ['$scope', '$rootScope', '$location','AuthenticationSharedService','USettings',
     function ($scope, $rootScope,$location, AuthenticationSharedService,USettings) {
