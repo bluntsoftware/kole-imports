@@ -24,6 +24,18 @@ catwalkApp.controller('MainCtrl', ['$scope','$state','$translate','$window','con
             });
         };
 
+        $scope.importKole = function(){
+            var koleApi =  conduit.collection('product','importKole');
+
+            for(x=0;x<220;x++){
+                var offset = x * 25;
+                koleApi.get({'offset':offset}).then(function(data){
+                    console.log("Import Success");
+                });
+            }
+        };
+
+
         $scope.send = function(){
             var getStatusApi =  conduit.collection('wow','getStatus');
             getStatusApi.save({'myName':'george'}).then(function(){
