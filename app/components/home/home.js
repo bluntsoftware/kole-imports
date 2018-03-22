@@ -8,6 +8,7 @@ catwalkApp.controller('MainCtrl', ['$scope','$state','$translate','$window','con
         * The table is proof and the database is wow
         * then return the table(proof) collection.
         * */
+//Tester
         conduit.createMongoFlow('proof','wow').then(function(proof){
             $scope.proof = proof;
         });
